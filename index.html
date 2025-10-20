@@ -6,37 +6,198 @@
 <title>قائمة التحويلات - Saad Bin Sulaib Al-Otaibi & Sons</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-  body{font-family:Tahoma, sans-serif;margin:0;padding:0;text-align:center;transition:background-color .3s,color .3s}
-  header{padding:20px;box-shadow:0 2px 6px rgba(0,0,0,.2)}
-  header img{max-height:80px}
-  h1{margin:10px 0 20px 0;font-size:24px}
-  #searchInput{margin:20px auto;padding:12px;width:50%;border:none;border-radius:12px;font-size:16px;box-shadow:0 2px 8px rgba(0,0,0,.15);outline:none}
-  button{margin:8px;padding:10px 18px;font-weight:700;border:none;border-radius:10px;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.15)}
-  table{border-collapse:collapse;width:95%;margin:20px auto;border-radius:12px;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,.15)}
-  th,td{padding:10px;font-size:15px;text-align:right}
-  th{font-size:16px;cursor:pointer}
-  tr:hover{opacity:.95}
-  /* Dark */
-  body.dark{background:#121212;color:#f3f3f3}
-  body.dark header{background:#1e1e1e}
-  body.dark h1{color:#d4af37}
-  body.dark #searchInput{background:#262626;color:#fff}
-  body.dark .btn{background:#d4af37;color:#000}
-  body.dark table{background:#1e1e1e;color:#f3f3f3}
-  body.dark th{background:#d4af37;color:#000}
-  body.dark tr:nth-child(even){background:#232323}
-  body.dark tr:nth-child(odd){background:#1e1e1e}
-  /* Light */
-  body.light{background:#f9fbff;color:#0b2545}
-  body.light header{background:#fff}
-  body.light h1{color:#0b4a86}
-  body.light #searchInput{background:#fff;color:#000;border:1px solid #ddd}
-  body.light .btn{background:#0b4a86;color:#fff}
-  body.light table{background:#fff;color:#000}
-  body.light th{background:#0b4a86;color:#fff}
-  body.light tr:nth-child(even){background:#f6f9ff}
-  body.light tr:nth-child(odd){background:#fff}
-</style>
+    body {
+      font-family: Tahoma, sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      transition: background-color .3s, color .3s;
+    }
+
+    header {
+      padding: 20px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, .2);
+    }
+
+    header img {
+      max-height: 80px;
+    }
+
+    h1 {
+      margin: 10px 0 20px 0;
+      font-size: 24px;
+    }
+
+    #searchInput {
+      margin: 20px auto;
+      padding: 12px;
+      width: 50%;
+      max-width: 500px;
+      min-width: 200px;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, .15);
+      outline: none;
+    }
+
+    button {
+      margin: 8px 5px;
+      padding: 10px 18px;
+      font-weight: 700;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, .15);
+      font-size: 15px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 95%;
+      margin: 20px auto;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, .15);
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      padding: 10px;
+      font-size: 15px;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    th {
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    tr:hover {
+      opacity: .95;
+    }
+
+    /* Dark Mode */
+    body.dark {
+      background: #121212;
+      color: #f3f3f3;
+    }
+
+    body.dark header {
+      background: #1e1e1e;
+    }
+
+    body.dark h1 {
+      color: #d4af37;
+    }
+
+    body.dark #searchInput {
+      background: #262626;
+      color: #fff;
+    }
+
+    body.dark .btn {
+      background: #d4af37;
+      color: #000;
+    }
+
+    body.dark table {
+      background: #1e1e1e;
+      color: #f3f3f3;
+    }
+
+    body.dark th {
+      background: #d4af37;
+      color: #000;
+    }
+
+    body.dark tr:nth-child(even) {
+      background: #232323;
+    }
+
+    body.dark tr:nth-child(odd) {
+      background: #1e1e1e;
+    }
+
+    /* Light Mode */
+    body.light {
+      background: #f9fbff;
+      color: #0b2545;
+    }
+
+    body.light header {
+      background: #fff;
+    }
+
+    body.light h1 {
+      color: #0b4a86;
+    }
+
+    body.light #searchInput {
+      background: #fff;
+      color: #000;
+      border: 1px solid #ddd;
+    }
+
+    body.light .btn {
+      background: #0b4a86;
+      color: #fff;
+    }
+
+    body.light table {
+      background: #fff;
+      color: #000;
+    }
+
+    body.light th {
+      background: #0b4a86;
+      color: #fff;
+    }
+
+    body.light tr:nth-child(even) {
+      background: #f6f9ff;
+    }
+
+    body.light tr:nth-child(odd) {
+      background: #fff;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header img {
+        max-height: 60px;
+      }
+
+      h1 {
+        font-size: 18px;
+        padding: 0 10px;
+      }
+
+      #searchInput {
+        width: 90%;
+        font-size: 14px;
+      }
+
+      button {
+        width: 90%;
+        font-size: 14px;
+        margin: 5px auto;
+        display: block;
+      }
+
+      table {
+        width: 100%;
+        font-size: 13px;
+      }
+
+      th, td {
+        padding: 8px 6px;
+        font-size: 13px;
+      }
+    }
+  </style>
 </head>
 <body class="dark">
 <header>

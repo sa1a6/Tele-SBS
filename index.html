@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <link rel="icon" type="image/jpeg" href="https://pbs.twimg.com/media/GG540HlXIAAhR34?format=jpg&name=large">
-<meta charset="utf-8" />
-<title>قائمة التحويلات - Saad Bin Sulaib Al-Otaibi & Sons</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>قائمة التحويلات - Saad Bin Sulaib Al-Otaibi & Sons</title>
+
+  <!-- Modern font (optional) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ====== Visual / layout improvements (centered, elegant, responsive) ====== */
+
     :root{
       --max-width:1200px;
       --gap:16px;
@@ -16,86 +21,230 @@
       --card-bg:#111318;
       --muted:#9aa3b2;
       --text:#e6eef8;
+      --glass: rgba(255,255,255,0.04);
     }
 
+    /* Base */
     html { font-size: clamp(13px, 1.6vw, 16px); box-sizing: border-box; }
     *,*::before,*::after{ box-sizing: inherit; }
     body{
       margin:0;
-      font-family: Tahoma, Inter, sans-serif;
+      min-height:100vh;
+      font-family: "Inter", Tahoma, sans-serif;
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
-      background: var(--dark-bg);
-      color: var(--text);
+      background: linear-gradient(180deg,#081021 0%, #0f1720 100%);
+      color:var(--text);
       line-height:1.45;
       transition: background-color .3s, color .3s;
+      display:flex;
+      justify-content:center; /* CENTER HORIZONTALLY */
+      padding: 28px 12px;     /* breathing space on small screens */
     }
 
+    /* Page card in the middle */
     .page {
       width:100%;
       max-width:var(--max-width);
-      margin-inline:auto;
-      padding: calc(var(--gap) * 0.75) var(--gap);
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:14px;
+      box-shadow: 0 20px 60px rgba(2,6,23,0.6);
+      overflow:hidden;
+      padding: 18px;
       box-sizing:border-box;
+      backdrop-filter: blur(6px);
     }
 
+    /* Header */
     header {
       display:flex;
       gap:12px;
       align-items:center;
-      justify-content:flex-start;
-      padding:12px 0;
+      justify-content:space-between;
+      margin-bottom:10px;
+    }
+    .brand {
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .logo {
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:var(--glass);
+      border-radius:8px;
+      padding:6px;
+    }
+    .logo img{
+      height:56px;
+      width:auto;
+      border-radius:6px;
+      object-fit:cover;
+      display:block;
+    }
+    .titles { text-align:right; }
+    .title { font-weight:700; font-size:1.1rem; color:var(--gold); margin:0; }
+    .sub { font-size:0.85rem; color:var(--muted); margin-top:4px; }
+
+    /* Controls row */
+    .controls {
+      display:flex;
+      gap:12px;
+      align-items:center;
+      justify-content:flex-end;
+      flex-wrap:wrap;
+      margin-top:8px;
+    }
+    #searchInput{
+      flex:1 1 420px;
+      max-width:620px;
+      padding:11px 14px;
+      border-radius:12px;
+      border: none;
+      background: rgba(255,255,255,0.02);
+      color:var(--text);
+      box-shadow: 0 8px 30px rgba(2,6,23,0.6);
+      outline: none;
+      transition: box-shadow .18s, transform .06s;
+    }
+    #searchInput::placeholder { color: rgba(230,238,248,0.6); }
+
+    .btn {
+      appearance:none;
+      border:0;
+      background: linear-gradient(180deg,var(--gold), #b88822);
+      color:#000;
+      padding:9px 14px;
+      border-radius:10px;
+      font-weight:700;
+      cursor:pointer;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.4);
+      white-space:nowrap;
+    }
+    .btn.ghost {
+      background: transparent;
+      border:1px solid rgba(255,255,255,0.06);
+      color:var(--text);
+      box-shadow:none;
+    }
+
+    /* Table wrapper */
+    .table-wrapper{
+      margin-top:18px;
+      overflow:auto;
+      border-radius:10px;
+      -webkit-overflow-scrolling:touch;
+      border:1px solid rgba(255,255,255,0.03);
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+      padding:8px;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      min-width:720px;
+      table-layout: auto;
+      font-size:0.95rem;
+      color:var(--text);
+    }
+    thead th{
       position: sticky;
       top:0;
-      z-index:50;
-      backdrop-filter: blur(6px);
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border-bottom: 1px solid rgba(255,255,255,0.03);
+      background: linear-gradient(180deg, #fde49b, #d4af37);
+      color:#000;
+      padding:12px 14px;
+      text-align:right;
+      font-weight:700;
+      font-size:0.95rem;
+      cursor:pointer;
+      z-index:2;
+      border-radius:6px;
     }
-    .logo img{ height:56px; width:auto; border-radius:8px; object-fit:cover; box-shadow: 0 6px 18px rgba(0,0,0,0.45); }
-    .title { font-weight:700; font-size:1.05rem; color:var(--gold); }
-    .sub { font-size:0.85rem; color:var(--muted); margin-top:2px; }
-
-    .controls { display:flex; gap:12px; align-items:center; justify-content:flex-end; flex-wrap:wrap; margin-top:12px; }
-    #searchInput{ flex:1 1 360px; max-width:580px; padding:10px 14px; border-radius:12px; border: none; background:var(--card-bg); color:var(--text); box-shadow: 0 6px 18px rgba(0,0,0,0.5); outline: none; transition: box-shadow .2s, transform .06s; }
-    #searchInput:focus{ box-shadow: 0 10px 24px rgba(11,109,183,0.12); transform: translateY(-1px); }
-
-    .btn { appearance:none; border:0; background: linear-gradient(180deg,var(--gold), #b88822); color:#000; padding:9px 14px; border-radius:10px; font-weight:700; cursor:pointer; box-shadow: 0 8px 22px rgba(0,0,0,0.45); }
-    .btn.secondary { background: transparent; border: 1px solid rgba(255,255,255,0.06); color:var(--text); box-shadow:none; }
-
-    .table-wrapper{ margin-top:18px; overflow:auto; border-radius:12px; -webkit-overflow-scrolling:touch; box-shadow: 0 12px 40px rgba(2,6,23,0.5); background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00)); border: 1px solid rgba(255,255,255,0.03); }
-
-    table{ width:100%; border-collapse:collapse; min-width:720px; table-layout: fixed; font-size:0.93rem; color:var(--text); }
-    thead th{ position: sticky; top:0; background: linear-gradient(180deg,var(--gold), #b88822); color:#000; padding:12px 14px; text-align:right; font-weight:700; font-size:0.95rem; cursor:pointer; z-index:2; }
-    tbody td{ padding:10px 12px; background: linear-gradient(0deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00)); text-align:right; white-space:nowrap; border-bottom:1px solid rgba(255,255,255,0.02); overflow:hidden; text-overflow:ellipsis; }
+    tbody td{
+      padding:10px 12px;
+      text-align:right;
+      white-space:nowrap;
+      border-bottom:1px solid rgba(255,255,255,0.02);
+      background: transparent;
+      color: inherit;
+    }
     tbody tr:nth-child(even) td { background: rgba(255,255,255,0.01); }
-    tbody tr:hover td { background: linear-gradient(90deg, rgba(11,109,183,0.06), rgba(11,109,183,0.02)); }
+    tbody tr:hover td { background: linear-gradient(90deg, rgba(11,109,183,0.04), rgba(11,109,183,0.01)); }
 
-    .muted { color:var(--muted); font-size:0.9rem; }
+    /* Light theme overrides (kept simple & safe) */
+    body.light {
+      background: linear-gradient(180deg,#f4f7fb, #f9fbff);
+      color:#0b2545;
+    }
+    body.light .page { background:#fff; color:#0b2545; }
+    body.light #searchInput { background:#fff; color:#0b2545; border:1px solid #e6eef8; }
+    body.light thead th { background: linear-gradient(180deg,#0b6db7,#07598f); color:#fff; }
+    body.light tbody tr:nth-child(even) td { background: #f6f9ff; }
+    body.light tbody td { color:#0b2545; }
+    body.light .btn { background: linear-gradient(180deg,#0b6db7,#07598f); color:#fff; }
 
-    @media (max-width: 900px){ .logo img{ height:48px; } .title{ font-size:1rem } #searchInput{ flex-basis: 220px; min-width: 140px; } thead th{ padding:10px 8px; font-size:0.9rem; } tbody td{ padding:8px 8px; font-size:0.9rem; } table{ min-width:600px; } }
-    @media (max-width:520px){ header{ padding:10px 8px; } .logo img{ height:44px; } .title{ font-size:0.95rem; } .controls{ flex-direction:column; align-items:stretch; gap:8px; } #searchInput{ width:100%; } .btn{ width:100%; } table{ min-width:540px; font-size:0.82rem; } thead th, tbody td{ padding:8px 6px; white-space:nowrap; } }
-    @media print{ body{ background:#fff; color:#000; } header, .controls, .btn, #langBtn { display:none !important; } .page{ padding:0; } .table-wrapper{ box-shadow:none; border:none; overflow:visible; } table{ min-width:0; width:100%; } thead th { position:static; background:#ccc; color:#000; } tbody td{ background:transparent; color:#000; } }
+    /* Dark theme (varies accent) */
+    body.dark .page { background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00)); }
+    body.dark thead th { background: linear-gradient(180deg,var(--gold), #b88822); color:#000; }
+    body.dark .btn.ghost { border:1px solid rgba(255,255,255,0.04); color:var(--text); }
 
-</style>
+    /* Responsive / mobile */
+    @media (max-width: 900px){
+      .logo img{ height:48px; }
+      .title{ font-size:1rem }
+      #searchInput{ flex-basis: 220px; min-width: 140px; }
+      thead th{ padding:10px 8px; font-size:0.9rem; }
+      tbody td{ padding:8px 8px; font-size:0.9rem; }
+      table{ min-width:600px; }
+    }
+    @media (max-width:520px){
+      .logo img{ height:44px; }
+      header{ flex-direction:column; align-items:stretch; gap:8px; }
+      .titles { text-align:right; }
+      .controls{ flex-direction:column; align-items:stretch; gap:8px; }
+      #searchInput{ width:100%; }
+      .btn{ width:100%; }
+      table{ min-width:520px; font-size:0.82rem; }
+      thead th, tbody td{ padding:8px 6px; white-space:nowrap; }
+    }
+
+    /* print */
+    @media print{
+      body{ background:#fff; color:#000; }
+      .controls, .btn, #langBtn { display:none !important; }
+      .page{ box-shadow:none; border:none; padding:0; }
+      .table-wrapper{ border:none; padding:0; overflow:visible; }
+      thead th { position:static; background:#ddd; color:#000; }
+      tbody td{ background:transparent; color:#000; }
+    }
+  </style>
 </head>
+
 <body>
-  <div class="page">
+  <div class="page" role="main" aria-label="قائمة التحويلات الرئيسية">
     <header>
-      <div class="logo" aria-hidden="false">
-        <img src="https://pbs.twimg.com/media/GG540HlXIAAhR34?format=jpg&name=large" alt="logo" />
+      <div class="brand">
+        <div class="logo" aria-hidden="false">
+          <img src="https://pbs.twimg.com/media/GG540HlXIAAhR34?format=jpg&name=large" alt="logo" />
+        </div>
+        <div class="titles">
+          <div class="title" id="pageTitle">قائمة التحويلات - شركة سعد بن صليب العتيبي وأولاده القابضة</div>
+          <div class="sub">Telephone &amp; extensions directory — منظم وحديث وسهل الاستخدام</div>
+        </div>
       </div>
-      <div style="flex:1 1 auto; text-align:right;">
-        <div class="title" id="pageTitle">قائمة التحويلات - شركة سعد بن صليب العتيبي وأولاده القابضة</div>
-        <div class="sub">Telephone &amp; extensions directory — منظم وحديث وسهل الاستخدام</div>
+
+      <div style="display:flex; gap:8px; align-items:center;">
+        <!-- small helper shown on wide screens; hidden on print via CSS -->
+        <div class="muted small" style="display:none;">&nbsp;</div>
       </div>
     </header>
 
     <div class="controls" role="region" aria-label="أدوات البحث والطباعة">
-      <input id="searchInput" placeholder="🔍 ابحث عن اسم أو تحويلة..." onkeyup="searchTable()" aria-label="ابحث في القائمة" />
-      <button id="printBtn" class="btn" onclick="window.print()" title="طباعة PDF">🖨️ طباعة PDF</button>
-      <button id="themeBtn" class="btn secondary" onclick="toggleTheme()" title="تبديل الثيم">🌙/☀️</button>
-      <button id="langBtn" class="btn secondary" onclick="toggleLang()" title="تبديل اللغة">🌐 English</button>
+      <input id="searchInput" placeholder="🔍 ابحث عن اسم أو تحويلة..." aria-label="ابحث في القائمة" />
+      <button id="printBtn" class="btn" onclick="window.print()">🖨️ طباعة PDF</button>
+      <button id="themeBtn" class="btn ghost" onclick="toggleTheme()" title="تبديل الثيم">🌙/☀️</button>
+      <button id="langBtn" class="btn ghost" onclick="toggleLang()" title="تبديل اللغة">🌐 English</button>
     </div>
 
     <div class="table-wrapper" role="region" aria-label="قائمة التحويلات">
@@ -302,4 +451,220 @@
 <tr><td>189</td><td>Extra</td><td>420</td><td>4th Floor</td><td>-</td><td>-</td></tr>
 <tr><td>190</td><td>Office # 1</td><td>500</td><td>Mezannine</td><td>Eng. Ahmed Al Otaibi</td><td>509240370</td></tr>
 <tr><td>191</td><td>Office # 2</td><td>501</td><td>Mezannine</td><td>-</td><td>-</td></tr>
-<tr>... (content continues) ...
+<tr><td>192</td><td>Office # 3</td><td>502</td><td>Mezannine</td><td>-</td><td>-</td></tr>
+<tr><td>193</td><td>Office # 4</td><td>503</td><td>Mezannine</td><td>Eng Mamdoh</td><td>-</td></tr>
+<tr><td>194</td><td>Office # 5</td><td>504</td><td>Mezannine</td><td>Abdullah Sayyar</td><td>506527839</td></tr>
+<tr><td>195</td><td>Office # 6</td><td>505</td><td>Mezannine</td><td>-</td><td>-</td></tr>
+<tr><td>196</td><td>Office # 7</td><td>506</td><td>Mezannine</td><td>Islam Abaza </td><td>-</td></tr>
+<tr><td>197</td><td>Office # 8</td><td>507</td><td>Mezannine</td><td>Eng AbdulRahman</td><td>-</td></tr>
+<tr><td>198</td><td>Office # 9</td><td>508</td><td>Mezannine</td><td>Moutazz</td><td>-</td></tr>
+<tr><td>199</td><td>Office # 10</td><td>509</td><td>Mezannine</td><td>-</td><td>-</td></tr>
+<tr><td>200</td><td>Office # 11</td><td>510</td><td>Mezannine</td><td>Mahmoud Hussain</td><td>-</td></tr>
+<tr><td>201</td><td>Office # 12</td><td>511</td><td>Mezannine</td><td>Eng.Anas</td><td>569564025</td></tr>
+<tr><td>202</td><td>Office # 13</td><td>512</td><td>Mezannine</td><td>Mohd Alsharif</td><td>-</td></tr>
+<tr><td>203</td><td>Extra</td><td>513</td><td>Mezannine</td><td>Saad Mohammed</td><td>-</td></tr>
+<tr><td>204</td><td>Extra</td><td>514</td><td>Mezannine</td><td>Ms Hind</td><td>-</td></tr>
+<tr><td>205</td><td>Extra</td><td>515</td><td>Mezannine</td><td>MezF-L-Kitchen</td><td>-</td></tr>
+<tr><td>206</td><td>Extra</td><td>516</td><td>Mezannine</td><td>MezF-R-Kitchen</td><td>-</td></tr>
+<tr><td>207</td><td>Extra</td><td>517</td><td>Mezannine</td><td>-</td><td>-</td></tr>
+<tr><td>208</td><td>Extra</td><td>518</td><td>Mezannine</td><td>-</td><td>-</td></tr>
+<tr><td>209</td><td>Extra</td><td>519</td><td>Mezannine</td><td>Marwan</td><td>570399219</td></tr>
+<tr><td>210</td><td>Tea Room</td><td>520</td><td>Mezannine</td><td>-</td><td>-</td></tr>
+<tr><td>211</td><td>Reception # 1</td><td>600</td><td>Ground Floor</td><td>RECP-1</td><td>556779955</td></tr>
+<tr><td>212</td><td>Reception # 2</td><td>601</td><td>Ground Floor</td><td>RECP-2</td><td>531278184</td></tr>
+<tr><td>213</td><td>Reception # 3</td><td>602</td><td>Ground Floor</td><td>-</td><td>-</td></tr>
+<tr><td>214</td><td>Office # 1</td><td>603</td><td>Ground Floor</td><td>-</td><td>-</td></tr>
+<tr><td>215</td><td>Office # 2</td><td>604</td><td>Ground Floor</td><td>-</td><td>-</td></tr>
+<tr><td>216</td><td>Office # 3</td><td>605</td><td>Ground Floor</td><td>-</td><td>-</td></tr>
+<tr><td>217</td><td>Office # 4</td><td>606</td><td>Ground Floor</td><td>-</td><td>-</td></tr>
+<tr><td>218</td><td>Office # 5</td><td>607</td><td>Ground Floor</td><td>-</td><td>-</td></tr>
+<tr><td>219</td><td>Office # 6</td><td>608</td><td>Ground Floor</td><td>-</td><td>-</td></tr>
+<tr><td>220</td><td>Office # 7</td><td>609</td><td>Ground Floor</td><td>-</td><td>-</td></tr>
+<tr><td>221</td><td>Board Room</td><td>610</td><td>Ground Floor</td><td>-</td><td>-</td></tr>
+<tr><td>222</td><td>Security Room / IT</td><td>611</td><td>Ground Floor</td><td>IT SecurityRoom</td><td>-</td></tr>
+<tr><td>223</td><td>Majlis</td><td>612</td><td>Ground Floor</td><td>GF-Kitchen</td><td>592636253</td></tr>
+<tr><td>224</td><td>Outdoor Security Kiosk</td><td>613</td><td>Ground Floor</td><td>Security Kiosk</td><td>581845631</td></tr>
+<tr><td>225</td><td>Archive</td><td>614</td><td>Basement Floor</td><td>Security Desk</td><td>-</td></tr>
+<tr><td>226</td><td>Masjid</td><td>615</td><td>Basement Floor</td><td>ParkingSecurity</td><td>-</td></tr>
+<tr><td>227</td><td>Electrical Room</td><td>616</td><td>Basement Floor</td><td>Abdul wahab Archive </td><td>-</td></tr>
+<tr><td>228</td><td>IT Room</td><td>617</td><td>Basement Floor</td><td>Eng.Tony</td><td>505840588</td></tr>
+<tr><td>229</td><td>Security Room</td><td>618</td><td>Basement Floor</td><td>-</td><td>-</td></tr>
+<tr><td>230</td><td>HVAC Team</td><td>619</td><td>Basement Floor</td><td>Vijay HVAC</td><td>-</td></tr>
+<tr><td>231</td><td>Extra</td><td>620</td><td>Basement Floor</td><td>Eng.Karthik</td><td>533091848</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    /* ===================== JS: safe, robust and non-destructive =====================
+       - Search works in Arabic/English and matches both displayed and original text.
+       - Language toggle switches UI and restores original cell values; translations are
+         applied only for readability and stored separately (no data loss).
+       - Theme toggle toggles dark/light and persists choice in localStorage.
+       - All code runs after DOMContentLoaded for safety.
+    ============================================================================== */
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchInput = document.getElementById('searchInput');
+      const phoneTable = document.getElementById('phoneTable');
+      const tbody = phoneTable.tBodies[0];
+      const langBtn = document.getElementById('langBtn');
+      const themeBtn = document.getElementById('themeBtn');
+      const printBtn = document.getElementById('printBtn');
+      const pageTitle = document.getElementById('pageTitle');
+      const col0 = document.getElementById('col0');
+      const col1 = document.getElementById('col1');
+      const col2 = document.getElementById('col2');
+      const col3 = document.getElementById('col3');
+      const col4 = document.getElementById('col4');
+      const col5 = document.getElementById('col5');
+
+      // small mapping for readability (non-destructive)
+      const enToAr = {
+        "3rd Floor": "الطابق الثالث",
+        "2nd Floor": "الطابق الثاني",
+        "1st Floor": "الطابق الأول",
+        "Ground Floor": "الطابق الأرضي",
+        "Basement Floor": "الطابق السفلي",
+        "Conference Room": "قاعة الاجتماعات",
+        "Pantry/Kitchen": "المطبخ",
+        "Tea Room": "غرفة الشاي",
+        "Meeting Room": "قاعة اجتماعات",
+        "Office": "المكتب",
+        "Work Station": "محطة العمل",
+        "Reception": "الاستقبال",
+        "Mezannine": "ميزانين"
+      };
+      const arToEn = Object.fromEntries(Object.entries(enToAr).map(([k,v]) => [v,k]));
+
+      // save originals (once)
+      function preserveOriginals() {
+        Array.from(tbody.rows).forEach(row => {
+          Array.from(row.cells).forEach(cell => {
+            if (!cell.hasAttribute('data-original')) cell.setAttribute('data-original', cell.innerText);
+            if (!cell.hasAttribute('data-ar')) {
+              let txt = cell.getAttribute('data-original') || cell.innerText;
+              // simple replacement using enToAr map
+              let replaced = txt;
+              for (const [en, ar] of Object.entries(enToAr)) {
+                const re = new RegExp(en.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
+                replaced = replaced.replace(re, ar);
+              }
+              cell.setAttribute('data-ar', replaced);
+            }
+          });
+        });
+      }
+      preserveOriginals();
+
+      // theme (persist)
+      const savedTheme = localStorage.getItem('telesbs-theme') || 'dark';
+      const savedLang = localStorage.getItem('telesbs-lang') || 'ar';
+
+      function applyTheme(theme) {
+        document.body.classList.remove('dark','light');
+        document.body.classList.add(theme);
+        localStorage.setItem('telesbs-theme', theme);
+        themeBtn.title = theme === 'dark' ? 'التبديل إلى الوضع النهاري' : 'Switch to dark mode';
+      }
+      applyTheme(savedTheme);
+
+      function applyLanguage(lang) {
+        localStorage.setItem('telesbs-lang', lang);
+        if (lang === 'ar') {
+          document.documentElement.lang='ar';
+          document.documentElement.dir='rtl';
+          pageTitle.innerText = 'قائمة التحويلات - شركة سعد بن صليب العتيبي وأولاده القابضة';
+          searchInput.placeholder = '🔍 ابحث عن اسم أو تحويلة...';
+          printBtn.innerText = '🖨️ طباعة PDF';
+          langBtn.innerText = '🌐 English';
+          col0.innerText='م'; col1.innerText='الاسم'; col2.innerText='التحويلة'; col3.innerText='الدور'; col4.innerText='المكتب'; col5.innerText='رقم الجوال';
+          Array.from(tbody.rows).forEach(row=>{
+            Array.from(row.cells).forEach(cell=>{
+              const ar = cell.getAttribute('data-ar');
+              if (ar !== null) cell.innerText = ar;
+            });
+          });
+        } else {
+          document.documentElement.lang='en';
+          document.documentElement.dir='ltr';
+          pageTitle.innerText = 'Telephone Directory - Saad Bin Sulaib Al-Otaibi & Sons Holding';
+          searchInput.placeholder = '🔍 Search by name or extension...';
+          printBtn.innerText = '🖨️ Print PDF';
+          langBtn.innerText = '🌐 العربية';
+          col0.innerText='No.'; col1.innerText='Name'; col2.innerText='Extension'; col3.innerText='Floor'; col4.innerText='Office'; col5.innerText='Mobile';
+          Array.from(tbody.rows).forEach(row=>{
+            Array.from(row.cells).forEach(cell=>{
+              const en = cell.getAttribute('data-original');
+              if (en !== null) cell.innerText = en;
+            });
+          });
+        }
+      }
+      applyLanguage(savedLang);
+
+      // Expose toggles globally (keeps compatibility with inline onclick)
+      window.toggleTheme = function() {
+        const current = document.body.classList.contains('dark') ? 'dark' : 'light';
+        applyTheme(current === 'dark' ? 'light' : 'dark');
+      };
+      window.toggleLang = function() {
+        const current = localStorage.getItem('telesbs-lang') || savedLang;
+        applyLanguage(current === 'ar' ? 'en' : 'ar');
+      };
+
+      // Robust search: checks displayed text, original english and arabic translations
+      function searchTable() {
+        const q = (searchInput.value || '').trim().toLowerCase();
+        if (!q) {
+          Array.from(tbody.rows).forEach(r => r.style.display = '');
+          return;
+        }
+        Array.from(tbody.rows).forEach(row => {
+          const displayed = row.innerText.toLowerCase();
+          const original = Array.from(row.cells).map(c => (c.getAttribute('data-original')||'')).join(' ').toLowerCase();
+          const ar = Array.from(row.cells).map(c => (c.getAttribute('data-ar')||'')).join(' ').toLowerCase();
+          const matches = displayed.includes(q) || original.includes(q) || ar.includes(q);
+          row.style.display = matches ? '' : 'none';
+        });
+      }
+
+      // wire up search input
+      searchInput.addEventListener('input', searchTable);
+      // keep compatibility with inline onkeyup
+      window.searchTable = searchTable;
+
+      // Sorting (safe - uses data-original for consistent results)
+      window.sortTable = function(colIndex){
+        const table = phoneTable;
+        const rows = Array.from(table.tBodies[0].rows);
+        const asc = table.getAttribute('data-sortdir') !== 'asc';
+        rows.sort((a,b) => {
+          const aCell = a.cells[colIndex];
+          const bCell = b.cells[colIndex];
+          const aText = (aCell.getAttribute('data-original') || aCell.innerText).trim().toLowerCase();
+          const bText = (bCell.getAttribute('data-original') || bCell.innerText).trim().toLowerCase();
+          // numeric-aware compare
+          return asc ? aText.localeCompare(bText, undefined, {numeric:true}) : bText.localeCompare(aText, undefined, {numeric:true});
+        });
+        const tbodyEl = table.tBodies[0];
+        rows.forEach(r => tbodyEl.appendChild(r));
+        table.setAttribute('data-sortdir', asc ? 'asc' : 'desc');
+      };
+
+      // Keyboard convenience: Enter -> jump to first visible row
+      searchInput.addEventListener('keydown', e=>{
+        if (e.key === 'Enter'){
+          const first = Array.from(tbody.rows).find(r => r.style.display !== 'none');
+          if (first) first.scrollIntoView({behavior:'smooth', block:'center'});
+        }
+      });
+
+      // ensure UI state (button labels)
+      themeBtn.title = document.body.classList.contains('dark') ? 'التبديل إلى الوضع النهاري' : 'Switch to dark mode';
+      langBtn.innerText = (localStorage.getItem('telesbs-lang')||savedLang) === 'ar' ? '🌐 English' : '🌐 العربية';
+    });
+  </script>
+</body>
+</html>

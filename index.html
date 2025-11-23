@@ -96,8 +96,12 @@
       flex-wrap:wrap;
       margin-top:8px;
     }
+    /* FIX: prevent the search input from growing too large on small screens
+       - flex:0 1 420px prevents it from taking unlimited space
+       - width:100% with sensible max-width keeps it centered and responsive */
     #searchInput{
-      flex:1 1 420px;
+      flex:0 1 420px;
+      width:100%;
       max-width:620px;
       padding:11px 14px;
       border-radius:12px;
@@ -107,6 +111,7 @@
       box-shadow: 0 8px 30px rgba(2,6,23,0.6);
       outline: none;
       transition: box-shadow .18s, transform .06s;
+      box-sizing: border-box;
     }
     #searchInput::placeholder { color: rgba(230,238,248,0.6); }
 
@@ -193,7 +198,8 @@
     @media (max-width: 900px){
       .logo img{ height:48px; }
       .title{ font-size:1rem }
-      #searchInput{ flex-basis: 220px; min-width: 140px; }
+      /* ensure search input doesn't grow too large */
+      #searchInput{ flex-basis: 220px; min-width: 140px; max-width:420px; }
       thead th{ padding:10px 8px; font-size:0.9rem; }
       tbody td{ padding:8px 8px; font-size:0.9rem; }
       table{ min-width:600px; }
@@ -203,7 +209,7 @@
       header{ flex-direction:column; align-items:stretch; gap:8px; }
       .titles { text-align:right; }
       .controls{ flex-direction:column; align-items:stretch; gap:8px; }
-      #searchInput{ width:100%; }
+      #searchInput{ width:100%; flex:0 1 auto; max-width:420px; margin-inline:auto; }
       .btn{ width:100%; }
       table{ min-width:520px; font-size:0.82rem; }
       thead th, tbody td{ padding:8px 6px; white-space:nowrap; }
@@ -297,7 +303,7 @@
 <tr><td>35</td><td>Office#9</td><td>212</td><td>2nd Floor</td><td>Ghaithan Qarni</td><td>-</td></tr>
 <tr><td>36</td><td>Office#10</td><td>213</td><td>2nd Floor</td><td>Eng.Kamal Batrawi</td><td>-</td></tr>
 <tr><td>37</td><td>Office#11</td><td>214</td><td>2nd Floor</td><td>Mohammed Wasi</td><td>-</td></tr>
-<tr><td>38</td><td>Office#12</td><td>215</td><td>Eng Fawziyah</td><td>-</td><td>-</td></tr>
+<tr><td>38</td><td>Office#12</td><td>215</td><td>2nd Floor</td><td>Eng Fawziyah</td><td>-</td></tr>
 <tr><td>39</td><td>Office#13</td><td>216</td><td>2nd Floor</td><td>-</td><td>-</td></tr>
 <tr><td>40</td><td>Office#14</td><td>217</td><td>2nd Floor</td><td>-</td><td>-</td></tr>
 <tr><td>41</td><td>Office#15</td><td>218</td><td>2nd Floor</td><td>-</td><td>-</td></tr>
